@@ -138,13 +138,17 @@ export const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           {/* Primary CTA */}
-          <a
-            href="#beaute-naturelle"
-            className="group relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#C9A24B] hover:bg-[#DFC07A] text-[#1D110A] font-semibold text-xs uppercase tracking-widest shadow-[0_4px_24px_rgba(201,162,75,0.4)] hover:shadow-[0_6px_30px_rgba(201,162,75,0.6)] transition-all duration-300"
+          <button
+            type="button"
+            onClick={() => {
+              const el = document.getElementById('produits') || document.getElementById('beaute-naturelle');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#C9A24B] hover:bg-[#DFC07A] text-[#1D110A] font-semibold text-xs uppercase tracking-widest shadow-[0_4px_24px_rgba(201,162,75,0.4)] hover:shadow-[0_6px_30px_rgba(201,162,75,0.6)] transition-all duration-300 cursor-pointer"
           >
             <span>DÉCOUVRIR NOS PRODUITS</span>
             <Sparkles className="w-4 h-4 text-[#1D110A] group-hover:rotate-12 transition-transform" />
-          </a>
+          </button>
 
           {/* WhatsApp Secondary CTA */}
           <a

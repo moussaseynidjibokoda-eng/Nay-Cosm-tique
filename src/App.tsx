@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
@@ -18,10 +18,7 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Only scroll to top if there is no hash
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
@@ -40,7 +37,7 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
 
@@ -59,6 +56,6 @@ export default function App() {
         <Footer />
         <WhatsAppButton />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

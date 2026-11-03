@@ -3,6 +3,12 @@
  * @description Répertoire des photographies éditoriales haute fidélité pour la campagne NAYÉ COSMÉTIQUE.
  */
 
+import heroPortrait from '../assets/images/hero_african_beauty_portrait_1793615131016.jpg';
+import heroHair from '../assets/images/hero_natural_hair_radiance_1793615131818.jpg';
+import sheaOilTexture from '../assets/images/section_botanical_shea_oil_1793615131924.jpg';
+import dewySkinTexture from '../assets/images/section_body_dewy_skin_1793615133053.jpg';
+import universeStillLife from '../assets/images/section_universe_botanicals_1793615133353.jpg';
+
 export interface CampaignSlide {
   id: string;
   image: string;
@@ -13,12 +19,12 @@ export interface CampaignSlide {
 }
 
 export const CAMPAIGN_IMAGES = {
-  // Portraits Hero
-  heroPortrait: "/src/assets/images/hero_african_beauty_portrait_1793615131016.jpg",
-  heroHair: "/src/assets/images/hero_natural_hair_radiance_1793615131818.jpg",
-  sheaOilTexture: "/src/assets/images/section_botanical_shea_oil_1793615131924.jpg",
-  dewySkinTexture: "/src/assets/images/section_body_dewy_skin_1793615133053.jpg",
-  universeStillLife: "/src/assets/images/section_universe_botanicals_1793615133353.jpg",
+  // Portraits Hero & Textures éditoriales
+  heroPortrait,
+  heroHair,
+  sheaOilTexture,
+  dewySkinTexture,
+  universeStillLife,
 } as const;
 
 export const HERO_SLIDES: CampaignSlide[] = [

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { BRAND_CONFIG, getWhatsAppUrl } from '../data/brand';
@@ -8,6 +8,7 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,14 +29,41 @@ export const Header: React.FC = () => {
   }, [location.pathname]);
 
   const navLinks = [
-    { label: 'Accueil', href: '/#' },
-    { label: 'Beauté Naturelle', href: '/#beaute-naturelle' },
-    { label: 'Soins Capillaires', href: '/#soins-capillaires' },
-    { label: 'Produits', href: '/#produits' },
-    { label: 'Kits', href: '/#kits' },
-    { label: 'Univers Nayé', href: '/#univers-naye' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Accueil', sectionId: '' },
+    { label: 'Beauté Naturelle', sectionId: 'beaute-naturelle' },
+    { label: 'Soins Capillaires', sectionId: 'soins-capillaires' },
+    { label: 'Produits', sectionId: 'produits' },
+    { label: 'Kits', sectionId: 'kits' },
+    { label: 'Univers Nayé', sectionId: 'univers-naye' },
+    { label: 'Contact', sectionId: 'contact' },
   ];
+
+  const handleNavClick = (sectionId?: string) => {
+    setMobileMenuOpen(false);
+    if (!sectionId) {
+      if (location.pathname !== '/') {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 120);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <>
@@ -74,29 +102,16 @@ export const Header: React.FC = () => {
 
             {/* Zone 2: Navigation Links (Desktop) */}
             <nav className="hidden lg:flex items-center gap-7">
-              {navLinks.map((link) => {
-                const isActive =
-                  location.pathname === '/' &&
-                  ((link.href === '/#' && !location.hash) ||
-                    (link.href.includes('#') && location.hash === link.href.replace('/', '')));
-
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="relative text-xs uppercase tracking-widest font-medium text-[#FBF6EE]/80 hover:text-[#C9A24B] transition-colors py-1 whitespace-nowrap"
-                  >
-                    {link.label}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavLine"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9A24B] rounded-full"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
-                  </a>
-                );
-              })}
+              {navLinks.map((link) => (
+                <button
+                  key={link.label}
+                  type="button"
+                  onClick={() => handleNavClick(link.sectionId)}
+                  className="relative text-xs uppercase tracking-widest font-medium text-[#FBF6EE]/80 hover:text-[#C9A24B] transition-colors py-1 whitespace-nowrap cursor-pointer"
+                >
+                  {link.label}
+                </button>
+              ))}
             </nav>
 
             {/* Zone 3: Primary Action (WhatsApp button) & Mobile Menu Toggle */}
@@ -132,8 +147,8 @@ export const Header: React.FC = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 bg-[#3B2417] text-[#FBF6EE] flex flex-col justify-between p-6 sm:p-8"
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+            className="fixed inset-0 z-50 bg-[#160D08] text-[#FBF6EE] flex flex-col justify-between p-6 sm:p-8"
           >
             {/* Top Bar inside Menu */}
             <div className="flex items-center justify-between">
@@ -163,17 +178,17 @@ export const Header: React.FC = () => {
             {/* Menu Links */}
             <div className="flex flex-col gap-6 my-auto text-center">
               {navLinks.map((link, idx) => (
-                <motion.a
+                <motion.button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  type="button"
+                  onClick={() => handleNavClick(link.sectionId)}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + idx * 0.06 }}
-                  className="font-serif-luxury text-2xl sm:text-3xl text-[#FBF6EE] hover:text-[#C9A24B] transition-colors py-1"
+                  className="font-serif-luxury text-2xl sm:text-3xl text-[#FBF6EE] hover:text-[#C9A24B] transition-colors py-1 cursor-pointer"
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
             </div>
 
@@ -183,14 +198,14 @@ export const Header: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 py-3 px-6 text-sm font-semibold tracking-wide text-[#3B2417] bg-[#C9A24B] hover:bg-[#DFC07A] rounded-full transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#160D08] bg-[#C9A24B] rounded-full shadow-lg"
               >
-                <MessageCircle className="w-5 h-5 text-[#3B2417]" />
-                <span>Commander sur WhatsApp ({BRAND_CONFIG.whatsappNumber})</span>
+                <MessageCircle className="w-4 h-4 text-[#160D08]" />
+                <span>Commander sur WhatsApp</span>
               </a>
-              <p className="text-xs text-[#FBF6EE]/60 tracking-widest uppercase">
-                {BRAND_CONFIG.city} — {BRAND_CONFIG.country}
+
+              <p className="text-[11px] text-[#FBF6EE]/60 tracking-wider uppercase">
+                {BRAND_CONFIG.signature}
               </p>
             </div>
           </motion.div>

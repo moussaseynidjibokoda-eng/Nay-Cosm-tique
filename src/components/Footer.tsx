@@ -1,17 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, Heart, Instagram, Facebook, Share2 } from 'lucide-react';
 import { BRAND_CONFIG, getWhatsAppUrl } from '../data/brand';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLinkClick = (sectionId?: string) => {
+    if (!sectionId) {
+      if (location.pathname !== '/') {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 120);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const footerLinks = [
-    { label: 'Accueil', href: '/#' },
-    { label: 'Produits', href: '/#produits' },
-    { label: 'Kits & Rituels', href: '/#kits' },
-    { label: 'Pourquoi Nayé', href: '/#pourquoi-naye' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Accueil', sectionId: '' },
+    { label: 'Produits', sectionId: 'produits' },
+    { label: 'Kits & Rituels', sectionId: 'kits' },
+    { label: 'Univers Botanique', sectionId: 'univers-naye' },
+    { label: 'Contact', sectionId: 'contact' },
   ];
 
   return (
@@ -70,12 +94,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-[#FBF6EE]/75 hover:text-[#C9A24B] transition-colors"
+                  <button
+                    type="button"
+                    onClick={() => handleLinkClick(link.sectionId)}
+                    className="text-[#FBF6EE]/75 hover:text-[#C9A24B] transition-colors cursor-pointer text-left"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
