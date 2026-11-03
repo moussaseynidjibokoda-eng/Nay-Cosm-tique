@@ -26,14 +26,26 @@ function ScrollToTop() {
 
 export default function App() {
   const [showPreloader, setShowPreloader] = useState(() => {
-    // Show preloader on first page load
-    const hasSeen = sessionStorage.getItem('naye_intro_seen');
-    return !hasSeen;
+    try {
+      if (typeof sessionStorage !== 'undefined') {
+        const hasSeen = sessionStorage.getItem('naye_intro_seen');
+        return !hasSeen;
+      }
+    } catch {
+      // Ignore storage restrictions
+    }
+    return false;
   });
 
   const handlePreloaderComplete = () => {
     setShowPreloader(false);
-    sessionStorage.setItem('naye_intro_seen', 'true');
+    try {
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('naye_intro_seen', 'true');
+      }
+    } catch {
+      // Ignore storage restrictions
+    }
   };
 
   return (

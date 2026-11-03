@@ -42,11 +42,24 @@
           "addressCountry": "NE"
         },
         "priceRange": "$$",
-        "image": "/logo-naye.jpg"
+        "image": "./logo-naye.jpg"
       }
     </script>
-    <script type="module" crossorigin src="./assets/index-DomSMKYN.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DSWXY7WT.css">
+    <script>
+      // Détection automatique pour GitHub Pages :
+      // Si le site est déployé depuis la racine / sur GitHub Pages,
+      // redirection immédiate vers le dossier /docs/ compilé pour éviter la page blanche.
+      (function() {
+        var host = window.location.hostname;
+        var path = window.location.pathname;
+        if (host.endsWith('github.io') && !path.includes('/docs')) {
+          var target = path.replace(/\/+$/, '') + '/docs/' + window.location.search + window.location.hash;
+          window.location.replace(target);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-BQeEn2y2.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CZo6SlZO.css">
   </head>
   <body class="bg-[#1A0F08] text-[#FBF6EE] antialiased selection:bg-[#C9A24B]/40 selection:text-[#FFFFFF]">
     <div id="root"></div>
