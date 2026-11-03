@@ -1,0 +1,6 @@
+{
+  "name": "Nayé Cosmétique",
+  "description": "Découvrez Nayé Cosmétique, votre marque de soins naturels à Niamey, Niger. Explorez notre univers beauté et contactez-nous directement sur WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

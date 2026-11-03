@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naye-cosmetique.com/sitemap.xml

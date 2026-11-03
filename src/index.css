@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --color-chocolat: #3B2417;
+  --color-chocolat-dark: #1D110A;
+  --color-chocolat-deep: #160D08;
+  --color-bronze: #7A4B27;
+  --color-caramel: #A6632B;
+  --color-or: #C9A24B;
+  --color-or-light: #DFC07A;
+  --color-or-pale: #F3E7C9;
+  --color-vert: #2F6B3A;
+  --color-vert-light: #3F8A4E;
+  --color-orange-naturel: #E8893A;
+  --color-creme: #FBF6EE;
+  --color-creme-warm: #F3EBDD;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #1A0F08;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #1A0F08;
+  color: #FBF6EE;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, .font-serif-luxury {
+  font-family: var(--font-serif);
+}
+
+/* Custom cinematic scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #160D08;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A24B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DFC07A;
+}
+
+/* Ken Burns slow cinematic pan and zoom */
+@keyframes kenBurnsSlow {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1.14) translate(1%, 0);
+  }
+}
+
+.animate-kenburns {
+  animation: kenBurnsSlow 24s ease-in-out infinite alternate;
+}
+
+/* Golden ambient pulse */
+@keyframes goldPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 4s ease-in-out infinite;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
