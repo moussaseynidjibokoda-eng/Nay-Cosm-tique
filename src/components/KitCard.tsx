@@ -5,6 +5,7 @@ import { MessageCircle, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { Kit } from '../data/kits';
 import { getWhatsAppUrl } from '../data/brand';
 import { CAMPAIGN_IMAGES } from '../data/campaignImages';
+import { getAssetUrl } from '../utils/assetUrl';
 
 interface KitCardProps {
   kit: Kit;
@@ -28,10 +29,17 @@ export const KitCard: React.FC<KitCardProps> = ({ kit, index = 0 }) => {
       {/* Large Vertical Image Area */}
       <div className="relative aspect-3/4 w-full bg-[#160D08] overflow-hidden">
         <img
-          src={kit.image || CAMPAIGN_IMAGES.universeStillLife}
+          src={getAssetUrl(kit.image) || CAMPAIGN_IMAGES.universeStillLife}
           alt={kit.nom}
           loading="lazy"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.triedFallback) {
+              target.dataset.triedFallback = 'true';
+              target.src = getAssetUrl(`${kit.slug}.jpg`);
+            }
+          }}
           className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-108"
         />
 

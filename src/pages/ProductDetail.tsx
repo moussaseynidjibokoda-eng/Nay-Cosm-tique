@@ -15,6 +15,7 @@ import { CAMPAIGN_IMAGES } from '../data/campaignImages';
 import { PageTransition } from '../animations/PageTransition';
 import { ProductCard } from '../components/ProductCard';
 import { NotFound } from './NotFound';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export const ProductDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -73,10 +74,17 @@ export const ProductDetail: React.FC = () => {
             className="relative aspect-3/4 max-h-[560px] mx-auto w-full rounded-3xl overflow-hidden bg-[#21130B] border border-[#C9A24B]/30 shadow-2xl flex items-center justify-center p-4 sm:p-6 group"
           >
             <img
-              src={product.image || CAMPAIGN_IMAGES.sheaOilTexture}
+              src={getAssetUrl(product.image) || CAMPAIGN_IMAGES.sheaOilTexture}
               alt={product.nom}
               className="max-h-full max-w-full object-contain rounded-2xl drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.triedFallback) {
+                  target.dataset.triedFallback = 'true';
+                  target.src = getAssetUrl(`${product.slug}.jpg`);
+                }
+              }}
             />
 
             <div className="absolute top-4 left-4 px-3.5 py-1.5 bg-black/75 backdrop-blur-md text-[#C9A24B] rounded-full text-[10px] uppercase tracking-widest font-semibold border border-[#C9A24B]/30">

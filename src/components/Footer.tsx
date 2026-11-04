@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, Heart, Instagram, Facebook, Share2 } from 'lucide-react';
 import { BRAND_CONFIG, getWhatsAppUrl } from '../data/brand';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -55,10 +56,13 @@ export const Footer: React.FC = () => {
             <Link to="/" className="flex items-center gap-3 mb-4 group">
               <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-[#C9A24B] to-[#E8893A] shadow-md group-hover:scale-105 transition-transform">
                 <img
-                  src={BRAND_CONFIG.officialLogoUrl}
+                  src={getAssetUrl(BRAND_CONFIG.officialLogoUrl)}
                   alt={BRAND_CONFIG.name}
                   className="w-full h-full object-cover rounded-full"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = getAssetUrl('logo-naye.jpg');
+                  }}
                 />
               </div>
               <div>

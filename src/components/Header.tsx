@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { BRAND_CONFIG, getWhatsAppUrl } from '../data/brand';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,10 +85,13 @@ export const Header: React.FC = () => {
             >
               <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-gradient-to-tr from-[#C9A24B] to-[#E8893A] shadow-md group-hover:scale-105 transition-transform duration-300">
                 <img
-                  src={BRAND_CONFIG.officialLogoUrl}
+                  src={getAssetUrl(BRAND_CONFIG.officialLogoUrl)}
                   alt={BRAND_CONFIG.name}
                   className="w-full h-full object-cover rounded-full"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = getAssetUrl('logo-naye.jpg');
+                  }}
                 />
               </div>
               <div className="flex flex-col">
@@ -154,10 +158,13 @@ export const Header: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src={BRAND_CONFIG.officialLogoUrl}
+                  src={getAssetUrl(BRAND_CONFIG.officialLogoUrl)}
                   alt={BRAND_CONFIG.name}
                   className="w-10 h-10 rounded-full border border-[#C9A24B]/50"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = getAssetUrl('logo-naye.jpg');
+                  }}
                 />
                 <div>
                   <div className="font-serif-luxury text-lg tracking-wider text-[#FBF6EE]">NAYÉ</div>

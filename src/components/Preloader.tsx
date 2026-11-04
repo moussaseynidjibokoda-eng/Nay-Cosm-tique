@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BRAND_CONFIG } from '../data/brand';
+import { getAssetUrl } from '../utils/assetUrl';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -61,10 +62,13 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           >
             <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-b from-[#C9A24B] via-[#C9A24B]/40 to-transparent shadow-[0_0_30px_rgba(201,162,75,0.25)]">
               <img
-                src={BRAND_CONFIG.officialLogoUrl}
+                src={getAssetUrl(BRAND_CONFIG.officialLogoUrl)}
                 alt={BRAND_CONFIG.name}
                 className="w-full h-full object-cover rounded-full"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = getAssetUrl('logo-naye.jpg');
+                }}
               />
             </div>
             {/* Shimmer reflection ring */}

@@ -5,6 +5,7 @@ import { MessageCircle, ArrowUpRight, Sparkles } from 'lucide-react';
 import { Product } from '../data/products';
 import { getWhatsAppUrl } from '../data/brand';
 import { CAMPAIGN_IMAGES } from '../data/campaignImages';
+import { getAssetUrl } from '../utils/assetUrl';
 
 interface ProductCardProps {
   product: Product;
@@ -29,10 +30,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) 
       {/* Large Vertical Image Area (3:4 aspect ratio) */}
       <div className="relative aspect-3/4 w-full bg-[#160D08] overflow-hidden">
         <img
-          src={product.image || CAMPAIGN_IMAGES.sheaOilTexture}
+          src={getAssetUrl(product.image) || CAMPAIGN_IMAGES.sheaOilTexture}
           alt={product.nom}
           loading="lazy"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.triedFallback) {
+              target.dataset.triedFallback = 'true';
+              target.src = getAssetUrl(`${product.slug}.jpg`);
+            }
+          }}
           className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-108"
         />
 

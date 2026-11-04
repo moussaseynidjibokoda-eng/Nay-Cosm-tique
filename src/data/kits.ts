@@ -44,7 +44,7 @@ export const kits: Kit[] = [
     ],
     utilisation: "1. Nettoyer avec le Savon noir ou le Gel de douche. 2. Appliquer la Crème de visage et quelques gouttes de Glow Oil sur le visage. 3. Masser la Chantilly corporelle sur le corps.",
     prix: "Prix du kit sur demande",
-    image: "/assets/aistudio/Skincare_kit_products_on_display_57cf4d67_6e4e09c7.jpg",
+    image: "./assets/aistudio/Skincare_kit_products_on_display_57cf4d67_6e4e09c7.jpg",
     ordre: 1,
   },
   {
@@ -77,7 +77,7 @@ export const kits: Kit[] = [
     ],
     utilisation: "Routine en 5 étapes numérotées : 1. Shampooing, 2. Démêlant, 3. Huile Secret, 4. Pommade, 5. Sérum Pousse Plus.",
     prix: "Prix du kit sur demande",
-    image: "/assets/aistudio/Hair_kit_products_on_marble_f3f8c70e_0fea43e6.jpg",
+    image: "./assets/aistudio/Hair_kit_products_on_marble_f3f8c70e_0fea43e6.jpg",
     ordre: 2,
   },
   {
@@ -107,7 +107,7 @@ export const kits: Kit[] = [
     ],
     utilisation: "Routine en 4 étapes numérotées : 1. Savon noir, 2. Eau de rose, 3. Crème de visage, 4. Lait de corps.",
     prix: "Prix du kit sur demande",
-    image: "/assets/aistudio/Cosmetics_products_on_marble_sur__e26f0f55_bd2e2adf.jpg",
+    image: "./assets/aistudio/Cosmetics_products_on_marble_sur__e26f0f55_bd2e2adf.jpg",
     ordre: 3,
   },
   {
@@ -138,7 +138,7 @@ export const kits: Kit[] = [
     ],
     utilisation: "Routine en 4 étapes : 1. Gommage avec la brosse, 2. Masque au miel, 3. Baume au miel, 4. Soin rose.",
     prix: "Prix du kit sur demande",
-    image: "/assets/aistudio/Lip_kit_product_photography_fd8993b5_ac34aa64.jpg",
+    image: "./assets/aistudio/Lip_kit_product_photography_fd8993b5_ac34aa64.jpg",
     ordre: 4,
   },
 ];

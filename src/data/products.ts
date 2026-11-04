@@ -41,7 +41,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur cheveux mouillés, masser le cuir chevelu, rincer abondamment.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Shampoo_bottle_product_photo_63123a49_e28e71a0.jpg",
+    image: "./assets/aistudio/Shampoo_bottle_product_photo_63123a49_e28e71a0.jpg",
     ordre: 1,
   },
   {
@@ -60,7 +60,7 @@ export const products: Product[] = [
     ],
     utilisation: "Après le shampooing, appliquer sur cheveux mouillés, démêler avec un peigne à dents larges, puis rincer.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Cosmetic_bottle_on_marble_surface_a55916ac_4077e6e8.jpg",
+    image: "./assets/aistudio/Cosmetic_bottle_on_marble_surface_a55916ac_4077e6e8.jpg",
     ordre: 2,
   },
   {
@@ -79,7 +79,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur le cuir chevelu et les longueurs en massant doucement.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Hair_oil_bottle_product_photo_d900e263_e027ea70.jpg",
+    image: "./assets/aistudio/Hair_oil_bottle_product_photo_d900e263_e027ea70.jpg",
     ordre: 3,
   },
   {
@@ -99,7 +99,7 @@ export const products: Product[] = [
     ],
     utilisation: "Masser le cuir chevelu et les racines avec une petite quantité.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Hair_growth_ointment_jar_product__14484767_6d87496d.jpg",
+    image: "./assets/aistudio/Hair_growth_ointment_jar_product__14484767_6d87496d.jpg",
     ordre: 4,
   },
   {
@@ -118,7 +118,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer quelques gouttes avec la pipette sur le cuir chevelu ou la barbe et masser.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Serum_bottle_on_white_surface_2ef8364d_5dc8a425.jpg",
+    image: "./assets/aistudio/Serum_bottle_on_white_surface_2ef8364d_5dc8a425.jpg",
     ordre: 5,
   },
   {
@@ -138,7 +138,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur peau humide, masser doucement, laisser agir quelques instants, puis rincer.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Product_photo_of_soap_jar_3f617851_1980bb5d.jpg",
+    image: "./assets/aistudio/Product_photo_of_soap_jar_3f617851_1980bb5d.jpg",
     ordre: 6,
   },
   {
@@ -158,7 +158,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur peau humide, masser doucement, laisser agir quelques instants, puis rincer.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Savon_noir__claircissant_product__cbee57b4_18d7c2d5.jpg",
+    image: "./assets/aistudio/Savon_noir__claircissant_product__cbee57b4_18d7c2d5.jpg",
     ordre: 7,
   },
   {
@@ -178,7 +178,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer quelques gouttes sur le visage et le corps et masser.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Glow_Oil_bottle_on_surface_5001868a_f75b4abf.jpg",
+    image: "./assets/aistudio/Glow_Oil_bottle_on_surface_5001868a_f75b4abf.jpg",
     ordre: 8,
   },
   {
@@ -197,7 +197,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur le corps propre et sec, en massant jusqu'à absorption.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Product_jar_on_marble_surface_569bf7f5_0ee7b3b3.jpg",
+    image: "./assets/aistudio/Product_jar_on_marble_surface_569bf7f5_0ee7b3b3.jpg",
     ordre: 9,
   },
   {
@@ -215,7 +215,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer une petite quantité sur le visage propre, matin et soir.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Face_cream_jar_on_surface_5922fb93_b74b9e27.jpg",
+    image: "./assets/aistudio/Face_cream_jar_on_surface_5922fb93_b74b9e27.jpg",
     ordre: 10,
   },
   {
@@ -233,7 +233,7 @@ export const products: Product[] = [
     ],
     utilisation: "Pomper une dose dans la main et masser sur le corps après la douche.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Body_lotion_bottle_product_photo_924a898a_8ddb73c7.jpg",
+    image: "./assets/aistudio/Body_lotion_bottle_product_photo_924a898a_8ddb73c7.jpg",
     ordre: 11,
   },
   {
@@ -251,7 +251,7 @@ export const products: Product[] = [
     ],
     utilisation: "Appliquer sur la peau mouillée, faire mousser, puis rincer.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Shower_gel_bottle_on_surface_97a496ad_18f8092f.jpg",
+    image: "./assets/aistudio/Shower_gel_bottle_on_surface_97a496ad_18f8092f.jpg",
     ordre: 12,
   },
   {
@@ -271,7 +271,7 @@ export const products: Product[] = [
     ],
     utilisation: "Vaporiser sur le visage propre matin et soir ou à tout moment de la journée pour rafraîchir.",
     prix: "Prix sur demande",
-    image: "/assets/aistudio/Face_mist_spray_product_photo_e8ad18df_4248d24e.jpg",
+    image: "./assets/aistudio/Face_mist_spray_product_photo_e8ad18df_4248d24e.jpg",
     ordre: 13,
   },
 ];
