@@ -32,11 +32,11 @@ export const NotFound: React.FC = () => {
             <span>Retour à l'accueil</span>
           </Link>
           <Link
-            to="/#produits"
+            to="/"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 text-[#FBF6EE] border border-[#C9A24B]/30 text-xs font-semibold uppercase tracking-wider transition-colors"
           >
             <ArrowLeft className="w-4 h-4 text-[#C9A24B]" />
-            <span>Nos produits</span>
+            <span>Découvrir nos soins</span>
           </Link>
         </div>
       </div>

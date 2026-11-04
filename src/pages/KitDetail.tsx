@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   ChevronRight,
@@ -9,6 +9,7 @@ import {
   Package,
   ShieldCheck,
   ArrowUpRight,
+  ArrowLeft,
 } from 'lucide-react';
 import { kits } from '../data/kits';
 import { products } from '../data/products';
@@ -68,25 +69,50 @@ export const KitDetail: React.FC = () => {
     });
   };
 
+  const navigate = useNavigate();
+
+  const handleGoToKits = () => {
+    navigate('/');
+    setTimeout(() => {
+      document.getElementById('kits')?.scrollIntoView({ behavior: 'smooth' });
+    }, 120);
+  };
+
   return (
     <PageTransition className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-[#FBF6EE]">
-      {/* Breadcrumb Navigation */}
-      <nav
-        aria-label="Fil d'Ariane"
-        className="flex items-center gap-2 text-xs text-[#FBF6EE]/60 mb-8 overflow-x-auto whitespace-nowrap"
-      >
-        <Link to="/" className="hover:text-[#C9A24B] transition-colors">
-          Accueil
-        </Link>
-        <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-        <a href="/#kits" className="hover:text-[#C9A24B] transition-colors">
-          Kits & Rituels
-        </a>
-        <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-        <span className="text-[#C9A24B] font-medium truncate max-w-[180px] sm:max-w-none">
-          {kit.nom}
-        </span>
-      </nav>
+      {/* Breadcrumb Navigation + Return Button */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <nav
+          aria-label="Fil d'Ariane"
+          className="flex items-center gap-2 text-xs text-[#FBF6EE]/60 overflow-x-auto whitespace-nowrap"
+        >
+          <Link to="/" className="hover:text-[#C9A24B] transition-colors">
+            Accueil
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
+          <button
+            type="button"
+            onClick={handleGoToKits}
+            className="hover:text-[#C9A24B] transition-colors cursor-pointer"
+          >
+            Kits & Rituels
+          </button>
+          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
+          <span className="text-[#C9A24B] font-medium truncate max-w-[180px] sm:max-w-none">
+            {kit.nom}
+          </span>
+        </nav>
+
+        <button
+          type="button"
+          onClick={handleGoToKits}
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#26160E] border border-[#C9A24B]/30 hover:border-[#C9A24B] text-xs text-[#C9A24B] hover:text-[#FBF6EE] transition-colors shrink-0 cursor-pointer"
+          aria-label="Retour aux coffrets et rituels"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Retour aux kits</span>
+        </button>
+      </div>
 
       {/* Main 2-Column Kit Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-20">
@@ -299,13 +325,14 @@ export const KitDetail: React.FC = () => {
                 Autres coffrets rituels
               </h2>
             </div>
-            <a
-              href="/#kits"
-              className="text-xs font-semibold text-[#C9A24B] hover:text-[#DFC07A] flex items-center gap-1 uppercase tracking-wider"
+            <button
+              type="button"
+              onClick={handleGoToKits}
+              className="text-xs font-semibold text-[#C9A24B] hover:text-[#DFC07A] flex items-center gap-1 uppercase tracking-wider cursor-pointer"
             >
               <span>Voir tout</span>
               <ChevronRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

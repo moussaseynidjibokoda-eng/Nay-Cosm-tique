@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   ChevronRight,
@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Clock,
   ShieldCheck,
+  ArrowLeft,
 } from 'lucide-react';
 import { products } from '../data/products';
 import { BRAND_CONFIG, getWhatsAppUrl } from '../data/brand';
@@ -23,6 +24,15 @@ export const ProductDetail: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
+
+  const navigate = useNavigate();
+
+  const handleGoToProducts = () => {
+    navigate('/');
+    setTimeout(() => {
+      document.getElementById('produits')?.scrollIntoView({ behavior: 'smooth' });
+    }, 120);
+  };
 
   const product = products.find((p) => p.slug === slug || p.id === slug);
 
@@ -43,25 +53,41 @@ export const ProductDetail: React.FC = () => {
 
   return (
     <PageTransition className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-[#FBF6EE]">
-      {/* Breadcrumb Navigation */}
-      <nav
-        aria-label="Fil d'Ariane"
-        className="flex items-center gap-2 text-xs text-[#FBF6EE]/60 mb-8 overflow-x-auto whitespace-nowrap"
-      >
-        <Link to="/" className="hover:text-[#C9A24B] transition-colors">
-          Accueil
-        </Link>
-        <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-        <a href="/#produits" className="hover:text-[#C9A24B] transition-colors">
-          Produits
-        </a>
-        <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-        <span className="text-[#FBF6EE]/60">{product.categorie}</span>
-        <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
-        <span className="text-[#C9A24B] font-medium truncate max-w-[160px] sm:max-w-none">
-          {product.nom}
-        </span>
-      </nav>
+      {/* Breadcrumb Navigation + Return Button */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <nav
+          aria-label="Fil d'Ariane"
+          className="flex items-center gap-2 text-xs text-[#FBF6EE]/60 overflow-x-auto whitespace-nowrap"
+        >
+          <Link to="/" className="hover:text-[#C9A24B] transition-colors">
+            Accueil
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
+          <button
+            type="button"
+            onClick={handleGoToProducts}
+            className="hover:text-[#C9A24B] transition-colors cursor-pointer"
+          >
+            Produits
+          </button>
+          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
+          <span className="text-[#FBF6EE]/60">{product.categorie}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24B]" />
+          <span className="text-[#C9A24B] font-medium truncate max-w-[160px] sm:max-w-none">
+            {product.nom}
+          </span>
+        </nav>
+
+        <button
+          type="button"
+          onClick={handleGoToProducts}
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#26160E] border border-[#C9A24B]/30 hover:border-[#C9A24B] text-xs text-[#C9A24B] hover:text-[#FBF6EE] transition-colors shrink-0 cursor-pointer"
+          aria-label="Retour au catalogue produits"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Retour aux produits</span>
+        </button>
+      </div>
 
       {/* Main 2-Column Product Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-20">
@@ -207,13 +233,14 @@ export const ProductDetail: React.FC = () => {
                 Vous aimerez aussi
               </h2>
             </div>
-            <a
-              href="/#produits"
-              className="text-xs font-semibold text-[#C9A24B] hover:text-[#DFC07A] flex items-center gap-1 uppercase tracking-wider"
+            <button
+              type="button"
+              onClick={handleGoToProducts}
+              className="text-xs font-semibold text-[#C9A24B] hover:text-[#DFC07A] flex items-center gap-1 uppercase tracking-wider cursor-pointer"
             >
               <span>Voir tout</span>
               <ChevronRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

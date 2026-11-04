@@ -35,9 +35,9 @@ export const ProductsSection: React.FC = () => {
         </p>
       </div>
 
-      {/* Interactive Category Filter Controls (Dark chocolate segmented bar) */}
-      <div className="flex items-center justify-center mb-14 overflow-x-auto pb-2 scrollbar-none">
-        <div className="inline-flex p-1.5 rounded-full bg-[#26160E] border border-[#C9A24B]/30 shadow-lg">
+      {/* Interactive Category Filter Controls (Wrapped & stacked on mobile for optimal display) */}
+      <div className="flex items-center justify-center mb-10 sm:mb-14 px-2">
+        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#26160E] border border-[#C9A24B]/30 shadow-lg max-w-lg sm:max-w-none">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -45,7 +45,7 @@ export const ProductsSection: React.FC = () => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 sm:px-7 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 whitespace-nowrap focus:outline-none ${
+                className={`px-4 sm:px-7 py-2 sm:py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 cursor-pointer focus:outline-none ${
                   isActive
                     ? 'bg-[#C9A24B] text-[#1D110A] font-semibold shadow-md'
                     : 'text-[#FBF6EE]/70 hover:text-[#FBF6EE] hover:bg-white/5'
